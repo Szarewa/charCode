@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Letter To Code</title>
+
+	<style type="text/css">
+		.main{width: 70%; margin: 10px auto; border: 2px solid brown; border-radius: 5px;}
+		.form{display: flex; justify-content: center; flex-direction: column; padding: 5px;}
+		textarea, button, span, .code{margin: 5px; padding: 15px; color: brown;}
+		button{background-color: lightblue; font-family: cursive; font-weight: bold; border: 1px solid gray;}
+
+		.code, .btnCode{display: none;}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="form">
+			<textarea rows="10" id="textArea"></textarea>
+			<button class="btn" id="btn">Send</button>
+			<hr/>
+			<span class="data" id="data"></span>
+			<div class="code" id="code"></div>
+			<button class="btnCode" id="btnCode">Decrypt</button>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+
+		const btn = document.getElementById('btn');
+
+		const code = document.getElementById('code');
+
+		const text = document.getElementById('textArea');
+		const disp  = document.getElementById('data') ;
+		let data = '';
+
+		const getData = () => {
+			const text_array = text.value;
+			return text_array;
+
+		}
+
+		text.addEventListener('keyup', getData);
+
+		const encryptData = () => {
+			const my_data = getData();
+			
+			for(let i = 0; i < my_data.length; i++){
+				data += `${my_data[i].charCodeAt()} / ${my_data[i]}`;
+			}
+			disp.textContent = data;
+		}
+
+		btn.addEventListener('click', ()=>{
+			encryptData();
+		});
+		
+	</script>
+</body>
+</html>
